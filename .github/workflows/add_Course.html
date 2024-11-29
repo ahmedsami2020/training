@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Course</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <img src="{{ url_for('static', filename='capmas.png') }}" alt="Company Logo" class="logo-capmas">
+            <img src="{{ url_for('static', filename='logo.png') }}" alt="Company Logo" class="logo">
+        </header>
+          <header>
+            <h1>Add Course</h1>
+        </header>
+        <form method="POST">
+            <label for="Course_Id">Course ID:</label>
+            <input type="text" name="Course_Id" id="Course_Id" required>
+            <br>
+            <label for="TrainerProgram_Id">Trainer Program ID:</label>
+            <select name="TrainerProgram_Id" id="TrainerProgram_Id" required>
+                {% for TrainingProgram in TrainingPrograms %}
+                <option value=" "> اختر من فضلك</option>
+                <option value="{{ TrainerProgram_Id }}">{{ TrainerProgram_Name }}</option>
+                {% endfor %}
+            </select>
+            <br>
+            <label for="Instructor_Id">Instructor ID:</label>
+            <select name="Instructor_Id" id="Instructor_Id" required>
+                {% for instructor in instructors %}
+                <option value=" "> اختر من فضلك</option>
+                <option value="{{ Nation_Instructor_Id }}">{{Instructor_Name }}</option>
+                {% endfor %}
+            </select>
+            <br>
+            <label for="Lab_Id">Lab ID:</label>
+            <select name="Lab_Id" id="Lab_Id" required>
+                {% for lab in labs %}
+              <option value=" "> اختر من فضلك</option>
+                <option value="{{ Lab_Id }}">{{ Lab_name }}</option>
+                {% endfor %}
+            </select>
+            <br>
+            <label for="Course_Cost">Course Cost:</label>
+            <input type="text" name="Course_Cost" id="Course_Cost" required>
+            <br>
+            <label for="CourseSessionCount">Course Session Count:</label>
+            <input type="text" name="CourseSessionCount" id="CourseSessionCount" required>
+            <br>
+            <label for="CourseDays">Course Days:</label>
+            <input type="text" name="CourseDays" id="CourseDays" required>
+            <br>
+            <label for="CourseTimeFrom">Course Time From:</label>
+            <input type="time" name="CourseTimeFrom" id="CourseTimeFrom" required>
+            <br>
+            <label for="CourseTimeTo">Course Time To:</label>
+            <input type="time" name="CourseTimeTo" id="CourseTimeTo" required>
+            <br>
+            <label for="CourseDateFrom">Course Date From:</label>
+            <input type="date" name="CourseDateFrom" id="CourseDateFrom" required>
+            <br>
+            <label for="CourseDateTo">Course Date To:</label>
+            <input type="date" name="CourseDateTo" id="CourseDateTo" required>
+            <br>
+            <label for="TrainerProgram_Desc">Trainer Program Description:</label>
+            <textarea name="TrainerProgram_Desc" id="TrainerProgram_Desc" rows="4" required></textarea>
+            <br>
+            <button type="submit">Submit</button>
+        </form>
+        <a href="{{ url_for('index') }}">Back to Home</a>
+    </div>
+</body>
+</html>

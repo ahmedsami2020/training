@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delete Public Management</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <script>
+        function updateManagementName() {
+            var managementSelect = document.getElementById("PublicMangementid");
+            var managementName = managementSelect.options[managementSelect.selectedIndex].getAttribute("data-name");
+            document.getElementById("PublicMangementname").innerText = managementName;
+        }
+    </script>
+</head>
+<body>
+<div class="container">
+    <header>
+        <img src="{{ url_for('static', filename='capmas.png') }}" alt="Company Logo" class="logo-capmas">
+        <h1 class="title">Delete Public Management</h1>
+        <img src="{{ url_for('static', filename='logo.png') }}" alt="Company Logo" class="logo">
+    </header>
+    <h1>Delete Public Management</h1>
+    <form action="{{ url_for('delete_Public_Mangement') }}" method="POST" class="form-delete">
+        <label for="PublicMangementid">Select Public Management to Delete</label>
+        <select id="PublicMangementid" name="PublicMangementid" onchange="updateManagementName()" required>
+            <option value="" data-name="">Select Public Management</option>
+            {% for pm in public_managements %}
+                <option value="{{ pm[0] }}" data-name="{{ pm[1] }}">{{ pm[0] }}</option>
+            {% endfor %}
+        </select><br>
+        <label for="PublicMangementname">Public Management Name:</label>
+        <span id="PublicMangementname"></span><br>
+        <input type="submit" value="Delete" class="btn-submit">
+        <a href="{{ url_for('index') }}" class="btn-back">Back to List</a>
+    </form>
+</div>
+</body>
+</html>

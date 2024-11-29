@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Instructor</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <script>
+        function validateInstructorInfo() {
+            var emailPattern = /^[^@]+@[^@]+\.[a-zA-Z]{2,}$/;
+            var emailInput = document.getElementById("Instructor_Email");
+            if (!emailPattern.test(emailInput.value)) {
+                alert("Please enter a valid email address.");
+                emailInput.value = "";
+                return false;
+            }
+            return true;
+        }
+    </script>
+</head>
+<body>
+<div class="container">
+<header>
+    <img src="/static/capmas.png" alt="Company Logo" class="logo-capmas">
+    <h1 class="title">Edit Instructor</h1>
+    <img src="/static/logo.png" alt="Company Logo" class="logo">
+</header>
+
+    <form action="" method="POST" class="form-edit" onsubmit="return validateInstructorInfo()">
+        <label for="Nation_Instructor_Id">Nation Instructor ID:</label>
+        <input type="text" id="Nation_Instructor_Id" name="Nation_Instructor_Id" required>
+        <br>
+        <label for="Instructor_Name">Instructor Name:</label>
+        <input type="text" id="Instructor_Name" name="Instructor_Name" required>
+        <br>
+        <label for="Instructor_Mobile">Instructor Mobile:</label>
+        <input type="text" id="Instructor_Mobile" name="Instructor_Mobile"  required>
+        <br>
+        <label for="Instructor_Birthdate">Instructor Birthdate:</label>
+        <input type="text" id="Instructor_Birthdate" name="Instructor_Birthdate" required>
+        <br>
+        <label for="Instructor_Email">Instructor Email:</label>
+        <input type="text" id="Instructor_Email" name="Instructor_Email" required>
+        <br>
+        <input type="submit" value="Update" class="btn-submit">
+    </form>
+    <a href="{{ url_for('index') }}" class="btn-back">Back to Home</a>
+</div>
+</body>
+</html>

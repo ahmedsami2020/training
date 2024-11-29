@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delete Permission</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <img src="{{ url_for('static', filename='capmas.png') }}" alt="Company Logo" class="logo-capmas">
+            <img src="{{ url_for('static', filename='logo.png') }}" alt="Company Logo" class="logo">
+        </header>
+        <h1>Delete Permission</h1>
+        <form method="POST">
+            <label for="PermissionId">Permission ID:</label>
+            <input type="text" name="PermissionId" id="PermissionId" value="{{ entry[0] }}" readonly>
+            <br>
+            <label for="PermissionType">Permission Type:</label>
+            <input type="text" name="PermissionType" id="PermissionType" value="{{ entry[1] }}" readonly>
+            <br>
+            <button type="submit">Delete</button>
+        </form>
+        <a href="{{ url_for('index') }}">Back to Home</a>
+    </div>
+</body>
+</html>

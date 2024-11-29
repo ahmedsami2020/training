@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Attendee</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <script>
+        function updateAttendeeInfo() {
+            var attendeeSelect = document.getElementById("attendeeId");
+            var attendeeDate = attendeeSelect.options[attendeeSelect.selectedIndex].getAttribute("data-date");
+            var traineeId = attendeeSelect.options[attendeeSelect.selectedIndex].getAttribute("data-trainee-id");
+            var courseId = attendeeSelect.options[attendeeSelect.selectedIndex].getAttribute("data-course-id");
+            var countDaysAbsent = attendeeSelect.options[attendeeSelect.selectedIndex].getAttribute("data-absent-days");
+
+            document.getElementById("attendDate").value = attendeeDate;
+            document.getElementById("traineeId").value = traineeId;
+            document.getElementById("courseId").value = courseId;
+            document.getElementById("absentDays").value = countDaysAbsent;
+        }
+
+        function validateAttendeeInfo() {
+            var datePattern = /^\d{4}-\d{2}-\d{2}$/; // YYYY-MM-DD format
+            var attendDateInput = document.getElementById("attendDate");
+            if (!datePattern.test(attendDateInput.value)) {
+                alert("Please enter the date in YYYY-MM-DD format.");
+                attendDateInput.value = "";
+                return false;
+            }
+            return true;
+        }
+    </script>
+</head>
+<body>
+<div class="container">
+<header>
+    <img src="/static/capmas.png" alt="Company Logo" class="logo-capmas">
+    <h1 class="title">Edit Attendee</h1>
+    <img src="/static/logo.png" alt="Company Logo" class="logo">
+</header>
+
+    <form action="" method="POST" class="form-edit" onsubmit="return validateAttendeeInfo()">
+        <label for="attendeeId">ID الحضور:</label>
+        <select id="attendeeId" name="attendeeId" onchange="updateAttendeeInfo()" required>
+            <option value="" data-date="" data-trainee-id="" data-course-id="" data-absent-days="">اختر من فضلك الحضور</option>
+            {% for attendee in attendees %}
+                <option value="{{ attendee.AttendeeId }}" data-date="{{ attendee.Attendedate }}" data-trainee-id="{{ attendee.Nation_Trainee_Id }}" data-course-id="{{ attendee.Course_Id }}" data-absent-days="{{ attendee.Countdayabbsent }}">{{ attendee.AttendeeId }}</option>
+            {% endfor %}
+        </select>
+        <br>
+        <label for="attendDate">تاريخ الحضور:</label>
+        <input type="text" id="attendDate" name="attendDate" required>
+        <br>
+        <label for="traineeId">رقم المتدرب الوطني:</label>
+        <input type="text" id="traineeId" name="traineeId" required>
+        <br>
+        <label for="courseId">رقم الدورة:</label>
+        <input type="text" id="courseId" name="courseId" required>
+        <br>
+        <label for="absentDays">عدد أيام الغياب:</label>
+        <input type="text" id="absentDays" name="absentDays" required>
+        <br>
+        <input type="submit" value="Update" class="btn-submit">
+    </form>
+    <a href="{{ url_for('index') }}" class="btn-back">Back to Home</a>
+</div>
+</body>
+</html>

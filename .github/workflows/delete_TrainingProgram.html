@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delete Training Program</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <script>
+        function updateProgramName() {
+            var TrainingProgramSelect = document.getElementById("TrainerProgram_Id");
+            var TrainingProgramName = TrainingProgramSelect.options[TrainingProgramSelect.selectedIndex].getAttribute("data-name");
+            document.getElementById("TrainerProgram_Name").innerText = TrainingProgramName;
+        }
+    </script>
+</head>
+<body>
+<div class="container">
+    <header>
+        <img src="{{ url_for('static', filename='capmas.png') }}" alt="Company Logo" class="logo-capmas">
+        <h1 class="title">Delete Training Program</h1>
+        <img src="{{ url_for('static', filename='logo.png') }}" alt="Company Logo" class="logo">
+    </header>
+    <form action="{{ url_for('delete_TrainingProgram') }}" method="POST" class="form-delete">
+        <label for="TrainerProgram_Id">Select Training Program to Delete</label>
+        <select id="TrainerProgram_Id" name="TrainerProgram_Id" onchange="updateProgramName()" required>
+            <option value="" data-name="">Select Trainer Program</option>
+            {% for TrainingProgram in training_programs %}
+                <option value="{{ TrainingProgram.TrainerProgram_Id }}" data-name="{{ TrainingProgram.TrainerProgram_Name }}">{{ TrainingProgram.TrainerProgram_Id }}</option>
+            {% endfor %}
+        </select><br>
+        <label for="TrainerProgram_Name">Trainer Program Name:</label>
+        <span id="TrainerProgram_Name"></span><br>
+        <input type="submit" value="Delete" class="btn-submit">
+        <a href="{{ url_for('index') }}" class="btn-back">Back to List</a>
+    </form>
+</div>
+</body>
+</html>

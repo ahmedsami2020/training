@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delete Sector</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <script>
+        function updateSectorName() {
+            var sectorSelect = document.getElementById("sectorid");
+            var sectorName = sectorSelect.options[sectorSelect.selectedIndex].getAttribute("data-name");
+            document.getElementById("sectorname").innerText = sectorName;
+        }
+    </script>
+</head>
+<body>
+<div class="container">
+<header>
+    <img src="/static/capmas.png" alt="Company Logo" class="logo-capmas">
+    <h1 class="title">Delete Sector</h1>
+    <img src="/static/logo.png" alt="Company Logo" class="logo">
+</header>
+
+        <form action="" method="POST" class="form-delete" onsubmit="return confirm('Are you sure you want to delete this sector?')">
+            <label for="sectorid">Select Sector:</label>
+            <select id="sectorid" name="sectorid" onchange="updateSectorName()" required>
+                <option value="" data-name="">Select Sector</option>
+                {% for sector in sectors %}
+                    <option value="{{ sector.sectorid }}" data-name="{{ sector.sectorname }}">{{ sector.sectorid }}</option>
+                {% endfor %}
+            </select>
+            <br>
+            <label for="sectorname">Sector Name:</label>
+            <span id="sectorname"></span>
+            <br>
+            <input type="submit" value="Delete" class="btn-submit">
+        </form>
+        <a href="{{ url_for('index') }}" class="btn-back">Back to Sector List</a>
+    </div>
+
+</body>
+</html>

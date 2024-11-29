@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Instructor</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+<div class="container">
+ <header>
+            <img src="{{ url_for('static', filename='capmas.png') }}" alt="Company Logo" class="logo-capmas">
+            <img src="{{ url_for('static', filename='logo.png') }}" alt="Company Logo" class="logo">
+        </header>
+    <h1>Add Attende</h1>
+    <form method="POST">
+        <label for="AbsenceId">AbsenceId:</label>
+        <input type="text" name="AbsenceId" id="AbsenceId" required>
+        <br>
+        <label for="Attendedate">Attendedate:</label>
+        <input type="date" name="Attendedate" id="Attendedate">
+        <br>
+        <label for="Nation_Trainee_Id">Nation_Trainee_Id:</label>
+        <input type="text" name="Nation_Trainee_Id" id="Nation_Trainee_Id">
+        <br>
+        <label for="Course_Id">Course_Id:</label>
+        <input type="text" name="Course_Id" id="Course_Id">
+        <br>
+        <label for="Countdayabbsent">Countdayabbsent:</label>
+        <input type="text" name="Countdayabbsent" id="Countdayabbsent">
+        <br>
+        <button type="submit">Submit</button>
+    </form>
+    <a href="{{ url_for('index') }}">Back to Home</a>
+    </div>
+</body>
+</html>

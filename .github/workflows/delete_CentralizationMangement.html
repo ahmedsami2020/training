@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delete Centralization Management</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <script>
+        function updateManagementName() {
+            var managementSelect = document.getElementById("CentralMangementid");
+            var managementName = managementSelect.options[managementSelect.selectedIndex].getAttribute("data-name");
+            document.getElementById("CentralMangementname").innerText = managementName;
+        }
+    </script>
+</head>
+<body>
+<div class="container">
+<header>
+    <img src="/static/capmas.png" alt="Company Logo" class="logo-capmas">
+    <h1 class="title">Delete Centralization Management</h1>
+    <img src="/static/logo.png" alt="Company Logo" class="logo">
+</header>
+
+    
+        <form action="" method="POST" class="form-delete" onsubmit="return confirm('Are you sure you want to delete this management?')">
+            <label for="CentralMangementid">Select Management:</label>
+            <select id="CentralMangementid" name="CentralMangementid" onchange="updateManagementName()" required>
+                <option value="" data-name="">Select Management</option>
+                {% for cm in central_managements %}
+                    <option value="{{ cm.CentralMangementid }}" data-name="{{ cm.CentralMangementname }}">{{ cm.CentralMangementid }}</option>
+                {% endfor %}
+            </select>
+            <br>
+            <label for="CentralMangementname">Management Name:</label>
+            <span id="CentralMangementname"></span>
+            <br>
+            <input type="submit" value="Delete" class="btn-submit">
+        </form>
+        <a href="{{ url_for('index') }}" class="btn-back">Back to List</a>
+    </div>
+
+</body>
+</html>

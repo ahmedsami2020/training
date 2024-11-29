@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Training Program</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <script>
+        function updateFields() {
+            var programSelect = document.getElementById("TrainerProgram_Id");
+            var programName = programSelect.options[programSelect.selectedIndex].getAttribute("data-name");
+            document.getElementById("TrainerProgram_Name").value = programName;
+        }
+
+        function validateProgramName() {
+            var programNameInput = document.getElementById("TrainerProgram_Name");
+            var pattern = /^[\u0600-\u06FFa-zA-Z\s]+$/; // يقبل الأحرف العربية والإنجليزية فقط
+            if (!pattern.test(programNameInput.value)) {
+                alert("Please enter only Arabic or English letters.");
+                programNameInput.value = "";
+                return false;
+            }
+            return true;
+        }
+    </script>
+</head>
+<body>
+<div class="container">
+    <header>
+        <img src="{{ url_for('static', filename='capmas.png') }}" alt="Company Logo" class="logo-capmas">
+           <h1 class="title">Edit Training Program</h1>
+        <img src="{{ url_for('static', filename='logo.png') }}" alt="Company Logo" class="logo">
+        
+    </header>
+    <form action="" method="POST" class="form-edit" onsubmit="return validateProgramName()">
+        <label for="TrainerProgram_Id">Select Training Program</label>
+        <select id="TrainerProgram_Id" name="TrainerProgram_Id" onchange="updateFields()" required>
+            <option value="" data-name="">Select Program</option>
+            {% for program in training_programs %}
+                <option value="{{ program[0] }}" data-name="{{ program[1] }}" {% if program[0] == training_program[0] %}selected{% endif %}>{{ program[1] }}</option>
+            {% endfor %}
+        </select><br>
+
+        <label for="TrainerProgram_Name">Training Program Name</label>
+        <input type="text" id="TrainerProgram_Name" name="TrainerProgram_Name" value="{{ training_program[1] }}" required><br>
+
+        <input type="submit" value="Update" class="btn-submit">
+    </form>
+    <a href="{{ url_for('index') }}" class="btn-back">Back to List</a>
+</div>
+</body>
+</html>

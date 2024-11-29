@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Centralization Management</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <script>
+        function updateFields() {
+            var managementSelect = document.getElementById("CentralMangementid");
+            var sectorId = managementSelect.options[managementSelect.selectedIndex].getAttribute("data-sectorid");
+            var managementName = managementSelect.options[managementSelect.selectedIndex].getAttribute("data-name");
+            document.getElementById("sectorid").value = sectorId;
+            document.getElementById("CentralMangementname").value = managementName;
+        }
+
+        function validateManagementName() {
+            var managementNameInput = document.getElementById("CentralMangementname");
+            var pattern = /^[\u0600-\u06FFa-zA-Z\s]+$/; // يقبل الأحرف العربية والإنجليزية فقط
+            if (!pattern.test(managementNameInput.value)) {
+                alert("Please enter only Arabic or English letters.");
+                managementNameInput.value = "";
+                return false;
+            }
+            return true;
+        }
+    </script>
+</head>
+<body>
+<div class="container">
+<header>
+    <img src="/static/capmas.png" alt="Company Logo" class="logo-capmas">
+    <h1 class="title">Edit Centralization Management</h1>
+    <img src="/static/logo.png" alt="Company Logo" class="logo">
+</header>
+
+    
+        <form action="" method="POST" class="form-edit" onsubmit="return validateManagementName()">
+            <label for="CentralMangementid">Select Management:</label>
+            <select id="CentralMangementid" name="CentralMangementid" onchange="updateFields()" required>
+                <option value="" data-sectorid="" data-name="">Select Management</option>
+                {% for cm in central_managements %}
+                    <option value="{{ cm.CentralMangementid }}" data-sectorid="{{ cm.sectorid }}" data-name="{{ cm.CentralMangementname }}">{{ cm.CentralMangementid }}</option>
+                {% endfor %}
+            </select>
+            <br>
+            <label for="sectorid">Sector:</label>
+            <select id="sectorid" name="sectorid" required>
+                {% for sector in sectors %}
+              <option value="">اختر القطاع</option
+                    <option value="{{ sector.sectorid }}">{{ sector.sectorname }}</option>
+                {% endfor %}
+            </select>
+            <br>
+            <label for="CentralMangementname">Management Name:</label>
+            <input type="text" id="CentralMangementname" name="CentralMangementname" required>
+            <br>
+            <input type="submit" value="Update" class="btn-submit">
+        </form>
+        <a href="{{ url_for('index') }}" class="btn-back">Back to List</a>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Lab</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <img src="{{ url_for('static', filename='capmas.png') }}" alt="Company Logo" class="logo-capmas">
+            <img src="{{ url_for('static', filename='logo.png') }}" alt="Company Logo" class="logo">
+        </header>
+        <h1>Add Lab</h1>
+        <form method="POST">
+            <label for="Lab_id">Lab ID:</label>
+            <input type="text" name="Lab_id" id="Lab_id" required>
+            <br>
+            <label for="Lab_name">Lab Name:</label>
+            <input type="text" name="Lab_name" id="Lab_name" required>
+            <br>
+            <label for="Lab_desc">Lab Description:</label>
+            <input type="text" name="Lab_desc" id="Lab_desc" required>
+            <br>
+            <label for="LabPc_count">Number of PCs:</label>
+            <input type="number" name="LabPc_count" id="LabPc_count" required>
+            <br>
+            <label for="LabHasWhiteboard">Has Whiteboard:</label>
+            <select name="LabHasWhiteboard" id="LabHasWhiteboard" required>
+               <option value=" "> اختر من فضلك</option>
+                <option value="Yes">Yes</option>
+                <option value="No">No</option>
+            </select>
+            <br>
+            <label for="LabHasDataShow">Has Data Show:</label>
+            <select name="LabHasDataShow" id="LabHasDataShow" required>
+                 <option value=" "> اختر من فضلك</option>
+                <option value="Yes">Yes</option>
+                <option value="No">No</option>
+            </select>
+            <br>
+            <button type="submit">Submit</button>
+        </form>
+        <a href="{{ url_for('index') }}">Back to Home</a>
+    </div>
+</body>
+</html>
+

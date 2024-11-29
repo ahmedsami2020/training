@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delete Course Result</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <img src="{{ url_for('static', filename='capmas.png') }}" alt="Company Logo" class="logo-capmas">
+            <img src="{{ url_for('static', filename='logo.png') }}" alt="Company Logo" class="logo">
+        </header>
+        <h1>Delete Course Result</h1>
+        <form method="POST">
+            <label for="Nation_Trainee_Id">Nation Trainee ID:</label>
+            <input type="text" name="Nation_Trainee_Id" id="Nation_Trainee_Id" value="{{ course_result.Nation_Trainee_Id }}" readonly>
+            <br>
+            <label for="Course_Id">Course:</label>
+            <input type="text" name="Course_Id" id="Course_Id" value="{{ course_result.Course_Id }}" readonly>
+            <br>
+            <label for="CTResult">Course Trainee Result:</label>
+            <input type="text" name="CTResult" id="CTResult" value="{{ course_result.CTResult }}" readonly>
+            <br>
+            <label for="id">ID:</label>
+            <input type="text" name="id" id="id" value="{{ course_result.id }}" readonly>
+            <br>
+            <label for="Train_id">Trainer:</label>
+            <input type="text" name="Train_id" id="Train_id" value="{{ course_result.Train_id }}" readonly>
+            <br>
+            <label for="TrainerProgram_Id">Trainer Program:</label>
+            <input type="text" name="TrainerProgram_Id" id="TrainerProgram_Id" value="{{ course_result.TrainerProgram_Id }}" readonly>
+            <br>
+            <button type="submit">Delete</button>
+        </form>
+        <a href="{{ url_for('index') }}">Back to Home</a>
+    </div>
+</body>
+</html>

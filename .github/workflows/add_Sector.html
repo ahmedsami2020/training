@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Sector</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+<script> function validateForm() 
+                    { const sectorname = document.getElementById('sectorname').value;
+                      const regex = /^[A-Za-z\u0600-\u06FF\s]+$/; if (!regex.test(sectorname))
+                   { 
+                     alert('يجب تسجيل اسم القطاع بحروف فقط باللغة العربية او اللغة الانجليزية');
+                       return false; } return true; }
+ </script>
+
+
+</head>
+<body>
+<div class="container">
+        <header>
+            <img src="{{ url_for('static', filename='capmas.png') }}" alt="Company Logo" class="logo-capmas">
+            <img src="{{ url_for('static', filename='logo.png') }}" alt="Company Logo" class="logo">
+        </header>
+
+    <h1>add_Sector</h1>
+    <form method="POST" onsubmit="return validateForm()">
+        <label for="sectorid">sectorid:</label>
+        <input type="text" name="sectorid" id="sectorid" required>
+        <br>
+        <label for="sectorname">sectorname:</label>
+        <input type="text" name="sectorname" id="sectorname" required>
+        <br>
+        
+        <button type="submit">Submit</button>
+    </form>
+    <a href="{{ url_for('index') }}">Back to Home</a>
+</div>
+</body>
+</html>

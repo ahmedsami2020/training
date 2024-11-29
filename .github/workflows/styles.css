@@ -1,0 +1,139 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #e9f5ff;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+.container {
+    max-width: 500px;
+    margin: 50px auto;
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+h1 {
+    color: #333;
+}
+
+form {
+    margin: 20px 0;
+    text-align: left;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    color: #333;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="time"],
+input[type="date"],
+input[type="email"],
+input[type="number"],
+select,
+textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #fff;
+    color: #333;
+}
+
+.main { 
+          margin: 20px;
+          display: flex; 
+          justify-content: 
+          center; align-items: 
+         center; height: 70vh; 
+}
+
+.form-container { 
+                 background-color: #fff; 
+                 padding: 30px;
+                 border-radius:8px; 
+                 box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+                 width: 100%;
+                 max-width: 500px; 
+                 text-align: center; } 
+form { 
+     display: flex;
+      flex-direction:column;
+    align-items: center; }
+
+input[type="text"], select 
+               { padding: 10px;
+                margin-top: 5px;
+                width: 100%; 
+               border: 1px solid #ccc; 
+              border-radius: 5px; }
+
+
+button ,.btn-submit {
+    width: 100%;
+    padding: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover,.btn-submit:hover  {
+    background-color: #45a049;
+}
+
+a {
+    display: block;
+    margin: 10px 0;
+    color: #4CAF50;
+    text-decoration: none;
+}
+
+a:hover,.btn-back:hover {
+    text-decoration: underline;
+}
+
+
+
+
+@media (max-width: 600px) {
+    .container {
+        padding: 10px;
+    }
+
+    header {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .logo-capmas, .logo {
+        width: 80px;
+        margin-bottom: 10px;
+    }
+}
+
+.logo-capmas {
+    width: 100px;
+    float: right;
+}
+
+.logo {
+    width: 100px;
+    float: left;
+}

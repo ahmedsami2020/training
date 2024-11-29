@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <style>
+        .nav-container {
+            display: flex;
+            justify-content: space-around;
+            align-items: flex-start;
+        }
+        nav {
+            width: 30%;
+        }
+        details {
+            margin-bottom: 1rem;
+        }
+        summary {
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 1.2rem;
+            text-align: center;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            margin: 5px 0;
+        }
+        a {
+            text-decoration: none;
+            color: blue;
+        }
+</style>
+    <style> body { background-image: url("{{ url_for('static', filename='background.jpg') }}"); 
+background-size: cover; background-position: center; background-repeat: no-repeat; height: 100vh; color: #000000; }
+ .overlay { background-color: rgba(0, 0, 0, 0.6); /* إضافة طبقة شفافة لتسهيل القراءة */ padding: 30px; border-radius: 10px; } 
+h1, h2 { color: #000000; /* لون العنوان */ } 
+.btn-primary { background-color: #ffdd57; border-color: #ffdd57; color: #000; }
+ .btn-primary:hover { background-color: #ffaa00; border-color: #ffaa00; } </style>
+</head>
+<body>
+<header> 
+    <img src="/static/capmas.png" alt="Company Logo" class="logo-capmas"> 
+    <h1 class="title">Welcome to the Training Database</h1>
+    <img src="/static/logo.png" alt="Company Logo" class="logo">
+</header>
+<div class="nav-container">
+    <nav>
+        <details>
+            <summary>شاشات الأضافة</summary>
+            <ul>
+                <li><a href="{{ url_for('add_Sector') }}">Add Sector</a></li>
+                <li><a href="{{ url_for('add_CentralizationMangement') }}">Add Centralization Management</a></li>
+                <li><a href="{{ url_for('add_Public_Mangement') }}">Add Public Management</a></li>
+                <li><a href="{{ url_for('add_TrainingProgram') }}">Add Training Program</a></li>
+                 <li><a href="{{ url_for('add_attende') }}">Add Attende</a></li>
+                <li><a href="{{ url_for('add_instructor') }}">Add Instructor</a></li>
+                <li><a href="{{ url_for('add_Course') }}">Add Course</a></li>
+                <li><a href="{{ url_for('add_Course_Result') }}">Add Course_Result</a></li>
+                <li><a href="{{ url_for('add_lab') }}">Add lab</a></li>
+                <li><a href="{{ url_for('add_in_out') }}">Add in_out</a></li>
+                 <li><a href="{{ url_for('add_Permissions') }}">Add Permissions</a></li>
+                <li><a href="{{ url_for('add_UserPermissions') }}">Add UserPermissions</a></li>
+                <li><a href="{{ url_for('add_Users') }}">Add Users</a></li>
+                
+            </ul>
+        </details>
+    </nav>
+    <nav>
+        <details>
+            <summary>شاشات التعديل</summary>
+            <ul>
+                <li><a href="{{ url_for('edit_Sector') }}">Edit Sector</a></li>
+                <li><a href="{{ url_for('edit_CentralizationMangement') }}">Edit CentralizationMangement</a></li>
+                <li><a href="{{ url_for('edit_Public_Mangement') }}">Edit Public Mangement </a></li>
+                <li><a href="{{ url_for('edit_TrainingProgram') }}">Edit TrainingProgram </a></li>
+                 <li><a href="{{ url_for('edit_attende') }}">Edit Attende</a></li>
+                <li><a href="{{ url_for('edit_instructor') }}">Edit Instructor</a></li>
+                <li><a href="{{ url_for('edit_Course') }}">Edit Course</a></li>
+                <li><a href="{{ url_for('edit_Course_Result') }}">Edit Course_Result</a></li>
+                <li><a href="{{ url_for('edit_lab') }}">Edit lab</a></li>
+                <li><a href="{{ url_for('edit_in_out') }}">Edit in_out</a></li>
+                <li><a href="{{ url_for('edit_Permissions') }}">Edit Permissions</a></li>
+                <li><a href="{{ url_for('edit_UserPermissions') }}">Edit UserPermissions</a></li>
+                <li><a href="{{ url_for('edit_Users') }}">Edit Users</a></li>
+            
+            </ul>
+        </details>
+    </nav>
+
+<nav>
+        <details>
+            <summary>شاشات الحذف</summary>
+            <ul>
+                <li><a href="{{ url_for('delete_Sector') }}">Delete Sector</a></li>
+                <li><a href="{{ url_for('delete_CentralizationMangement') }}">Delete CentralizationMangement</a></li>
+                <li><a href="{{ url_for('delete_Public_Mangement') }}">Delete Public Mangement</a></li>
+                <li><a href="{{ url_for('delete_TrainingProgram') }}">Delete Training Program</a></li>
+                <li><a href="{{ url_for('delete_attende') }}">Delete Attende</a></li>
+                <li><a href="{{ url_for('delete_instructor') }}">Delete Instructor</a></li>
+                <li><a href="{{ url_for('delete_Course') }}">Delete Course</a></li>
+                <li><a href="{{ url_for('delete_Course_Result') }}">Delete Course_Result</a></li>
+                 <li><a href="{{ url_for('delete_lab') }}">Delete lab</a></li>
+                <li><a href="{{ url_for('delete_in_out') }}">Delete in_out</a></li>
+                 <li><a href="{{ url_for('delete_Permissions') }}">Delete Permissions</a></li>
+               <li><a href="{{ url_for('delete_UserPermissions') }}">Delete UserPermissions</a></li>
+               <li><a href="{{ url_for('delete_Users') }}">Delete Users</a></li>
+               
+            </ul>
+        </details>
+    </nav>
+</div>
+</body>
+</html>

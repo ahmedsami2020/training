@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Training Program</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+
+</head>
+<body>
+<div class="container">
+        <header>
+            <img src="{{ url_for('static', filename='capmas.png') }}" alt="Company Logo" class="logo-capmas">
+            <img src="{{ url_for('static', filename='logo.png') }}" alt="Company Logo" class="logo">
+        </header>
+
+    <h1>add_TrainingProgram</h1>
+    <form method="POST">
+        <label for="TrainerProgram_Id">TrainerProgram_Id:</label>
+        <input type="text" name="TrainerProgram_Id" id="TrainerProgram_Id" required>
+        <br>
+        <label for="TrainerProgram_Name">TrainerProgram_Name:</label>
+        <input type="text" name="TrainerProgram_Name" id="TrainerProgram_Name" required>
+        <br>
+        
+        <button type="submit">Submit</button>
+    </form>
+    <a href="{{ url_for('index') }}">Back to Home</a>
+</div>
+</body>
+</html>

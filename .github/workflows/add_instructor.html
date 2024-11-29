@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Instructor</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <img src="{{ url_for('static', filename='capmas.png') }}" alt="Company Logo" class="logo-capmas">
+            <img src="{{ url_for('static', filename='logo.png') }}" alt="Company Logo" class="logo">
+        </header>
+        <h1>Add Instructor</h1>
+        <form method="POST">
+            <label for="Nation_Instructor_Id">Nation Instructor ID:</label>
+            <input type="text" name="Nation_Instructor_Id" id="Nation_Instructor_Id" required>
+            <br>
+            <label for="Instructor_Name">Instructor Name:</label>
+            <input type="text" name="Instructor_Name" id="Instructor_Name">
+            <br>
+            <label for="Instructor_Mobile">Instructor Mobile:</label>
+            <input type="text" name="Instructor_Mobile" id="Instructor_Mobile">
+            <br>
+            <label for="Instructor_Bierthdate">Instructor Bierthdate:</label>
+        <input type="date" name="Instructor_Bierthdate" id="Instructor_Bierthdate">
+            <br>
+            <label for="Instructor_Email">Instructor Email:</label>
+            <input type="email" name="Instructor_Email" id="Instructor_Email">
+            <br><br>
+            <button type="submit">Submit</button>
+        </form>
+        <a href="{{ url_for('index') }}">Back to Home</a>
+    </div>
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit User</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <img src="{{ url_for('static', filename='capmas.png') }}" alt="Company Logo" class="logo-capmas">
+            <img src="{{ url_for('static', filename='logo.png') }}" alt="Company Logo" class="logo">
+        </header>
+        <h1>Edit User</h1>
+        <form method="POST">
+            <label for="UserId">User ID:</label>
+            <input type="text" name="UserId" id="UserId" value="{{ entry[0] }}" readonly>
+            <br>
+            <label for="UserName">User Name:</label>
+            <input type="text" name="UserName" id="UserName" value="{{ entry[1] }}" required>
+            <br>
+            <label for="UserRole">User Role:</label>
+            <input type="text" name="UserRole" id="UserRole" value="{{ entry[2] }}" required>
+            <br>
+            <label for="Password">Password:</label>
+            <input type="text" name="Password" id="Password" value="{{ entry[3] }}" required>
+            <br>
+            <button type="submit">Submit</button>
+        </form>
+        <a href="{{ url_for('index') }}">Back to Home</a>
+    </div>
+</body>
+</html>

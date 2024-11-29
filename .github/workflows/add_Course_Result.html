@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Course Result</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <img src="{{ url_for('static', filename='capmas.png') }}" alt="Company Logo" class="logo-capmas">
+            <img src="{{ url_for('static', filename='logo.png') }}" alt="Company Logo" class="logo">
+        </header>
+        <h1>Add Course Result</h1>
+        <form method="POST">
+            <label for="CourseTrainee_Id">Course Trainee ID:</label>
+            <input type="text" name="CourseTrainee_Id" id="CourseTrainee_Id" required>
+            <br>
+            <label for="Nation_Trainee_Id">Nation Trainee ID:</label>
+            <input type="text" name="Nation_Trainee_Id" id="Nation_Trainee_Id" required>
+            <br>
+            <label for="Course_Id">Course:</label>
+            <select name="Course_Id" id="Course_Id" required>
+                {% for course in courses %}
+                <option value="{{ course[0] }}">{{ course[1] }}</option>
+                {% endfor %}
+            </select>
+            <br>
+            <label for="CTResult">Course Trainee Result:</label>
+            <input type="text" name="CTResult" id="CTResult" required>
+            <br>
+            <label for="id">ID:</label>
+            <input type="text" name="id" id="id" required>
+            <br>
+            <label for="Train_id">Trainer:</label>
+            <select name="Train_id" id="Train_id" required>
+                {% for trainer in trainers %}
+                <option value="{{ trainer[0] }}">{{ trainer[1] }}</option>
+                {% endfor %}
+            </select>
+            <br>
+            <label for="TrainerProgram_Id">Trainer Program:</label>
+            <select name="TrainerProgram_Id" id="TrainerProgram_Id" required>
+                {% for program in trainer_programs %}
+                <option value="{{ program[0] }}">{{ program[1] }}</option>
+                {% endfor %}
+            </select>
+            <br>
+            <button type="submit">Submit</button>
+        </form>
+        <a href="{{ url_for('index') }}">Back to Home</a>
+    </div>
+</body>
+</html>

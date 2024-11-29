@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delete Course</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <script>
+        function updateCourseInfo() {
+            var courseSelect = document.getElementById("courseId");
+            var courseCost = courseSelect.options[courseSelect.selectedIndex].getAttribute("data-cost");
+            var sessionCount = courseSelect.options[courseSelect.selectedIndex].getAttribute("data-session-count");
+            var courseDays = courseSelect.options[courseSelect.selectedIndex].getAttribute("data-days");
+            var timeFrom = courseSelect.options[courseSelect.selectedIndex].getAttribute("data-time-from");
+            var timeTo = courseSelect.options[courseSelect.selectedIndex].getAttribute("data-time-to");
+            var dateFrom = courseSelect.options[courseSelect.selectedIndex].getAttribute("data-date-from");
+            var dateTo = courseSelect.options[courseSelect.selectedIndex].getAttribute("data-date-to");
+            var programDesc = courseSelect.options[courseSelect.selectedIndex].getAttribute("data-program-desc");
+
+            document.getElementById("CourseCost").value = courseCost;
+            document.getElementById("SessionCount").value = sessionCount;
+            document.getElementById("CourseDays").value = courseDays;
+            document.getElementById("TimeFrom").value = timeFrom;
+            document.getElementById("TimeTo").value = timeTo;
+            document.getElementById("DateFrom").value = dateFrom;
+            document.getElementById("DateTo").value = dateTo;
+            document.getElementById("ProgramDesc").value = programDesc;
+        }
+    </script>
+</head>
+<body>
+<div class="container">
+<header>
+    <img src="/static/capmas.png" alt="Company Logo" class="logo-capmas">
+    <h1 class="title">Delete Course</h1>
+    <img src="/static/logo.png" alt="Company Logo" class="logo">
+</header>
+
+    <form action="" method="POST" class="form-delete">
+        <label for="courseId">ID الدورة:</label>
+        <select id="courseId" name="courseId" onchange="updateCourseInfo()" required>
+            <option value="" data-cost="" data-session-count="" data-days="" data-time-from="" data-time-to="" data-date-from="" data-date-to="" data-program-desc="">اختر من فضلك الدورة</option>
+            {% for course in courses %}
+                <option value="{{ course.CourseId }}" data-cost="{{ course.CourseCost }}" data-session-count="{{ course.CourseSessionCount }}" data-days="{{ course.CourseDays }}" data-time-from="{{ course.CourseTimeFrom }}" data-time-to="{{ course.CourseTimeTo }}" data-date-from="{{ course.CourseDateFrom }}" data-date-to="{{ course.CourseDateTo }}" data-program-desc="{{ course.TrainerProgramDesc }}">{{ course.CourseId }}</option>
+            {% endfor %}
+        </select>
+        <br>
+        <label for="CourseCost">تكلفة الدورة:</label>
+        <input type="number" id="CourseCost" name="CourseCost" readonly>
+        <br>
+        <label for="SessionCount">عدد الجلسات:</label>
+        <input type="number" id="SessionCount" name="SessionCount" readonly>
+        <br>
+        <label for="CourseDays">أيام الدورة:</label>
+        <input type="text" id="CourseDays" name="CourseDays" readonly>
+        <br>
+        <label for="TimeFrom">وقت البدء:</label>
+        <input type="time" id="TimeFrom" name="TimeFrom" readonly>
+        <br>
+        <label for="TimeTo">وقت الانتهاء:</label>
+        <input type="time" id="TimeTo" name="TimeTo" readonly>
+        <br>
+        <label for="DateFrom">تاريخ البدء:</label>
+        <input type="date" id="DateFrom" name="DateFrom" readonly>
+        <br>
+        <label for="DateTo">تاريخ الانتهاء:</label>
+        <input type="date" id="DateTo" name="DateTo" readonly>
+        <br>
+        <label for="ProgramDesc">وصف البرنامج التدريبي:</label>
+        <textarea id="ProgramDesc" name="ProgramDesc" readonly></textarea>
+        <br>
+        <input type="submit" value="Delete" class="btn-submit">
+    </form>
+    <a href="{{ url_for('index') }}" class="btn-back">Back to Home</a>
+</div>
+</body>
+</html>

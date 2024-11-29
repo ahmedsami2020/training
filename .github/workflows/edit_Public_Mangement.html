@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Public Management</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <script>
+        function updateFields() {
+            var managementSelect = document.getElementById("PublicMangementid");
+            var managementName = managementSelect.options[managementSelect.selectedIndex].getAttribute("data-name");
+            document.getElementById("PublicMangementname").value = managementName;
+        }
+
+        function validateManagementName() {
+            var managementNameInput = document.getElementById("PublicMangementname");
+            var pattern = /^[\u0600-\u06FFa-zA-Z\s]+$/; // يقبل الأحرف العربية والإنجليزية فقط
+            if (!pattern.test(managementNameInput.value)) {
+                alert("Please enter only Arabic or English letters.");
+                managementNameInput.value = "";
+                return false;
+            }
+            return true;
+        }
+    </script>
+</head>
+<body>
+<div class="container">
+    <header>
+        <img src="{{ url_for('static', filename='capmas.png') }}" alt="Company Logo" class="logo-capmas">
+        <h1 class="title">Edit Public Management</h1>
+        <img src="{{ url_for('static', filename='logo.png') }}" alt="Company Logo" class="logo">
+    </header>
+    
+    <form action="" method="POST" class="form-edit" onsubmit="return validateManagementName()">
+        <label for="PublicMangementid">Select Public Management</label>
+        <select id="PublicMangementid" name="PublicMangementid" onchange="updateFields()" required>
+            <option value="" data-name="">Select Management</option>
+            {% for pm in public_managements %}
+                <option value="{{ pm[0] }}" data-name="{{ pm[1] }}" {% if pm[0] == public_mangement[0] %}selected{% endif %}>{{ pm[1] }}</option>
+            {% endfor %}
+        </select><br>
+
+        <label for="CentralMangementid">Central Management ID</label>
+        <select id="CentralMangementid" name="CentralMangementid" required>
+            <option value="" data-name="">Select Central Management</option>
+            {% for central in CentralizationMangement %}
+                <option value="{{ central[0] }}" data-name="{{ central[1] }}" {% if central[0] == public_mangement[1] %}selected{% endif %}>{{ central[1] }}</option>
+            {% endfor %}
+        </select><br>
+
+        <label for="PublicMangementname">Public Management Name</label>
+        <input type="text" id="PublicMangementname" name="PublicMangementname" value="{{ public_mangement[2] }}" required><br>
+
+        <input type="submit" value="Update" class="btn-submit">
+    </form>
+    <a href="{{ url_for('index') }}" class="btn-back">Back to List</a>
+</div>
+</body>
+</html>

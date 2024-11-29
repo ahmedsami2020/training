@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Sector</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <script>
+        function updateSectorName() {
+            var sectorSelect = document.getElementById("sectorid");
+            var sectorName = sectorSelect.options[sectorSelect.selectedIndex].getAttribute("data-name");
+            document.getElementById("sectorname").value = sectorName;
+        }
+
+        function validateSectorName() {
+            var sectorNameInput = document.getElementById("sectorname");
+            var pattern = /^[\u0600-\u06FFa-zA-Z\s]+$/; // يقبل الأحرف العربية والإنجليزية فقط
+            if (!pattern.test(sectorNameInput.value)) {
+                alert("Please enter only Arabic or English letters.");
+                sectorNameInput.value = "";
+                return false;
+            }
+            return true;
+        }
+    </script>
+</head>
+<body>
+<div class="container">
+<header>
+    <img src="/static/capmas.png" alt="Company Logo" class="logo-capmas">
+    <h1 class="title">Edit Sector</h1>
+    <img src="/static/logo.png" alt="Company Logo" class="logo">
+</header>
+
+        <form action="" method="POST" class="form-edit" onsubmit="return validateSectorName()">
+            <label for="sectorid">كود القطاع:</label>
+            <select id="sectorid" name="sectorid" onchange="updateSectorName()" required>
+                <option value="" data-name="">اختر من فضلك القطاع</option>
+                {% for sector in sectors %}
+                    <option value="{{ sector.sectorid }}" data-name="{{ sector.sectorname }}">{{ sector.sectorid }}</option>
+                {% endfor %}
+            </select>
+            <br>
+            <label for="sectorname">اسم القطاع:</label>
+            <input type="text" id="sectorname" name="sectorname" required>
+            <br>
+            <input type="submit" value="Update" class="btn-submit">
+        </form>
+        <a href="{{ url_for('index') }}" class="btn-back">Back to Home</a>
+</div>
+</body>
+</html>

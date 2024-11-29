@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit User Permission</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <img src="{{ url_for('static', filename='capmas.png') }}" alt="Company Logo" class="logo-capmas">
+            <img src="{{ url_for('static', filename='logo.png') }}" alt="Company Logo" class="logo">
+        </header>
+        <h1>Edit User Permission</h1>
+        <form method="POST">
+            <label for="UserId">User ID:</label>
+            <input type="text" name="UserId" id="UserId" value="{{ entry[0] }}" readonly>
+            <br>
+            <label for="PermissionId">Current Permission ID:</label>
+            <input type="text" name="PermissionId" id="PermissionId" value="{{ entry[1] }}" readonly>
+            <br>
+            <label for="PermissionId">New Permission Type:</label>
+            <select name="PermissionId" id="PermissionId" required>
+                {% for permission in permissions %}
+                    <option value="{{ permission[0] }}">{{ permission[1] }}</option>
+                {% endfor %}
+            </select>
+            <br>
+            <button type="submit">Submit</button>
+        </form>
+        <a href="{{ url_for('index') }}">Back to Home</a>
+    </div>
+</body>
+</html>
